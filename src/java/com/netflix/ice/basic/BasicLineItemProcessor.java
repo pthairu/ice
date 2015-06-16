@@ -154,7 +154,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         if (result == Result.ignore || result == Result.delay)
             return result;
 
-        if (usageType.name.startsWith("TimedStorage-ByteHrs"))
+        if (usageType.name.startsWith("TimedStorage-ByteHrs")
+                || usageType.name.startsWith("TimedStorage-GlacierByteHrs"))
             result = Result.daily;
 
         boolean monthlyCost = StringUtils.isEmpty(items[descriptionIndex]) ? false : items[descriptionIndex].toLowerCase().contains("-month");
